@@ -47,12 +47,12 @@ def put_item():
         'event': {'S': 'gaming_nationals_zaf'}, 
         'timestamp': {'S': '2019-02-08T14:53'}, 
         'score': {'N': '11885'}, 
-        'name': {'S': 'will'}, 
-        'gamerid': {'S': 'wilson9335'},
+        'name': {'S': 'bob'}, 
+        'gamerid': {'S': 'bob9335'},
         'game': {'S': 'counter strike'}, 
-        'age': {'N': '27'}, 
+        'age': {'N': '76'}, 
         'rank': {'S': 'professional'}, 
-        'location': {'S': 'sweden'}
+        'location': {'S': 'US'}
     }
 )
 
@@ -76,9 +76,12 @@ def update_item(item, attribute, value):
     }
 )
 
+
+# put_item()
 # update_item('gaming_nationals_zaf','gamerid','willz9335')
 # response=get_item()
-
+bob=get_item('gaming_nationals_zaf')
+print(bob)
 # print(response)
 # dynamo_client.get_item(TableName='fruitSalad', Key={'fruitName':{'S':'Banana'}})
 
