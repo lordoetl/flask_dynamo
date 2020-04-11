@@ -10,7 +10,7 @@ Steps to make this work in Zappa
     4a. ensure it is reading and writing to your DynamoDb
 5. create virtualenv (you may need to `pip install virtualenv`) <br>
     5a. for windows (and probably Max) `python -m venv \zappenv`
-6. activate your virtualenv ` <br>
+6. activate your virtualenv <br>
     6a. for Windows (and probably Mac) `\zappenv\Scripts\activate.bat`
 7. install requirements.txt `pip install -r requirements.txt`<br>
     (note) you may need to update pip and remember to include any additional requirements you have added.
