@@ -6,13 +6,13 @@ dynamo_client = boto3.Session(region_name='us-east-1').client('dynamodb')
 
 
 def get_all():
-    table='dbSource'
+    table='bobTable'
     return dynamo_client.scan(
         TableName=table
         )
 
 def create_table():
-        table='dbSource'
+        table='bobTable'
         response = dynamo_client.create_table(
             AttributeDefinitions=[{
                 'AttributeName': 'event',
@@ -48,7 +48,7 @@ def create_table():
 
 def put_item():
     dynamo_client.put_item(
-    TableName='dbSource',
+    TableName='bobTable',
     Item={
         'event': {'S': 'gaming_nationals_zaf'}, 
         'timestamp': {'S': '2019-02-08T14:53'}, 
@@ -63,7 +63,7 @@ def put_item():
 )
 
 def get_item():
-    table='dbSource'
+    table='bobTable'
     item='1942Casablanca'
     response = dynamo_client.get_item(
     Key={

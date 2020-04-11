@@ -8,9 +8,9 @@ item='1942Casablanca'
 
 @app.route('/')
 def index():
-    html=f"""This is the main page.<br> <a href=/get-items> get items</a>
-            <br> <a href=/do_items/>Only do this once</a> 
-            <br> <a href=/get-all>get all of the data</a>"""
+    html=f"""This is the main page.<br> <a href=/dev/get-items> get items</a>
+            <br> <a href=/dev/do_items/>Only do this once</a> 
+            <br> <a href=/dev/get-all>get all of the data</a>"""
     return html
     
 @app.route('/get-items/')
