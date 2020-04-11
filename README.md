@@ -6,13 +6,13 @@ Steps to make this work in Zappa
 1. Create a user in IAM and get Access Keys (or use your current AccessKeys)
 2. If you haven't done it before then install AWSCLI (pip install awscli)
 3. Run `aws configure` and set your access keys and the region you would like to use for you DynamoDb
-4. Write and test your Flask code (provided here)
+4. Write and test your Flask code (provided here)<br>
     4a. ensure it is reading and writing to your DynamoDb
-5. create virtualenv (you may need to `pip install virtualenv`) 
+5. create virtualenv (you may need to `pip install virtualenv`) <br>
     5a. for windows (and probably Max) `python -m venv \zappenv`
-6. activate your virtualenv ` 
+6. activate your virtualenv <br>
     6a. for Windows (and probably Mac) `\zappenv\Scripts\activate.bat`
-7. install requirements.txt `pip install -r requirements.txt`
+7. install requirements.txt `pip install -r requirements.txt`<br>
     (note) you may need to update pip and remember to include any additional requirements you have added.
     to update pip type `python -m pip install --upgrade pip`
     if you have to upgrade pip you will need to install requirements again.
