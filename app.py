@@ -4,17 +4,18 @@ import aws_controller
 app = Flask(__name__)
 
 table='bobTable'
+item='1942Casablanca'
 
 @app.route('/')
 def index():
-    html=f"""This is the main page.<br> <a href=/get-items/{table}> get items</a>
+    html=f"""This is the main page.<br> <a href=/get-items/{table}/{item}> get items</a>
             <br> <a href=/do_items/{table}>Only do this once</a> 
             <br> <a href=/get-all/{table}>get all of the data</a>"""
     return html
     
-@app.route('/get-items/<table>')
-def get_items(table):
-    return jsonify(aws_controller.get_item(table))
+@app.route('/get-items/<table>/<item>')
+def get_items(table,item):
+    return jsonify(aws_controller.get_item(table,item))
 
 @app.route('/get-all/<table>')
 def get_all(table):

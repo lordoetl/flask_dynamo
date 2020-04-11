@@ -8,24 +8,25 @@ dynamo_client = boto3.Session(region_name='us-east-1').client('dynamodb')
 def get_all(table):
     return dynamo_client.scan(
         TableName=table
-    )
+        )
 
 def create_table(table):
-    response = dynamo_client.create_table(
-	AttributeDefinitions=[{
-		'AttributeName': 'event', 
-		'AttributeType': 'S'
-	}
+        response = dynamo_client.create_table(
+            AttributeDefinitions=[{
+                'AttributeName': 'event',
+                'AttributeType': 'S'
+            }
     # , 
 	# {
+     #additional keys can be added here
 	# 	'AttributeName': 'timestamp', 
 	# 	'AttributeType': 'S'
 	# }
-    ], 
-	TableName=table, 
-	KeySchema=[{
-		'AttributeName': 'event', 
-		'KeyType': 'HASH'
+            ], 
+                TableName=table, 
+                KeySchema=[{
+                    'AttributeName': 'event', 
+                    'KeyType': 'HASH'
 	}
     # , 
 	# {
@@ -33,17 +34,15 @@ def create_table(table):
 	# 	'KeyType': 'RANGE'
 	# }
     ]
-    , 
-	ProvisionedThroughput={
-		'ReadCapacityUnits': 1, 
-		'WriteCapacityUnits': 2
-	}
-    
-  
-    )
-    time.sleep(5)
-    put_item(table)
-    return response
+            , 
+            ProvisionedThroughput={
+                'ReadCapacityUnits': 1, 
+                'WriteCapacityUnits': 2
+            }
+      )
+        time.sleep(5)
+        put_item(table)
+        return response
 
 def put_item(table):
     dynamo_client.put_item(
@@ -61,18 +60,18 @@ def put_item(table):
     }
 )
 
-def get_item(item):
+def get_item(table,item):
     response = dynamo_client.get_item(
     Key={
         'event': {'S': item}
     }, 
-    TableName='gamescores'  #could pass this value in as well to manage multiple tables
+    TableName=table  #could pass this value in as well to manage multiple tables
     )
     return response
 
-def update_item(item, attribute, value):
+def update_item(item, attribute, value, table):
     dynamo_client.update_item(
-    TableName='gamescores', 
+    TableName=table, 
     Key={
         'event': {'S': item}
     }, 
