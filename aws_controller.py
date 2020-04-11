@@ -1,42 +1,32 @@
 import boto3
 
+
 # dynamo_client = boto3.client('dynamodb')
 dynamo_client = boto3.Session(region_name='us-east-1').client('dynamodb')
-# def get_items():
-#     return dynamo_client.scan(
-#         TableName='YourTestTable'
-#     )
+def get_all():
+    return dynamo_client.scan(
+        TableName='YourTestTable'
+    )
 
-def create_table():
+def create_table(tableName):
+
     response = dynamo_client.create_table(
-	AttributeDefinitions=[{
-		'AttributeName': 'event', 
-		'AttributeType': 'S'
-	}
-    # , 
-	# {
-	# 	'AttributeName': 'timestamp', 
-	# 	'AttributeType': 'S'
-	# }
+    AttributeDefinitions=[{
+        'AttributeName': 'event', 
+        'AttributeType': 'S'
+    }
     ], 
-	TableName='gamescores', 
-	KeySchema=[{
-		'AttributeName': 'event', 
-		'KeyType': 'HASH'
-	}
-    # , 
-	# {
-	# 	'AttributeName': 'timestamp', 
-	# 	'KeyType': 'RANGE'
-	# }
+    TableName=tableName, 
+    KeySchema=[{
+        'AttributeName': 'event', 
+        'KeyType': 'HASH'
+    }
     ]
     , 
-	ProvisionedThroughput={
-		'ReadCapacityUnits': 1, 
-		'WriteCapacityUnits': 2
-	}
-    
-  
+    ProvisionedThroughput={
+        'ReadCapacityUnits': 1, 
+        'WriteCapacityUnits': 2
+    }
     )
     return response
 
@@ -80,8 +70,8 @@ def update_item(item, attribute, value):
 # put_item()
 # update_item('gaming_nationals_zaf','gamerid','willz9335')
 # response=get_item()
-bob=get_item('gaming_nationals_zaf')
-print(bob)
+# bob=get_item('gaming_nationals_zaf')
+# print(bob)
 # print(response)
 # dynamo_client.get_item(TableName='fruitSalad', Key={'fruitName':{'S':'Banana'}})
 
