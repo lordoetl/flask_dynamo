@@ -5,12 +5,14 @@ import time
 dynamo_client = boto3.Session(region_name='us-east-1').client('dynamodb')
 
 
-def get_all(table):
+def get_all():
+    table='dbSource'
     return dynamo_client.scan(
         TableName=table
         )
 
-def create_table(table):
+def create_table():
+        table='dbSource'
         response = dynamo_client.create_table(
             AttributeDefinitions=[{
                 'AttributeName': 'event',
@@ -41,12 +43,12 @@ def create_table(table):
             }
       )
         time.sleep(5)
-        put_item(table)
+        put_item()
         return response
 
-def put_item(table):
+def put_item():
     dynamo_client.put_item(
-    TableName=table,
+    TableName='dbSource',
     Item={
         'event': {'S': 'gaming_nationals_zaf'}, 
         'timestamp': {'S': '2019-02-08T14:53'}, 
@@ -60,7 +62,9 @@ def put_item(table):
     }
 )
 
-def get_item(table,item):
+def get_item():
+    table='dbSource'
+    item='1942Casablanca'
     response = dynamo_client.get_item(
     Key={
         'event': {'S': item}
@@ -69,7 +73,7 @@ def get_item(table,item):
     )
     return response
 
-def update_item(item, attribute, value, table):
+def update_item(item, attribute, value, table): # works, but not going to demo
     dynamo_client.update_item(
     TableName=table, 
     Key={
@@ -80,7 +84,7 @@ def update_item(item, attribute, value, table):
     }
 )
 
-
+#calls for testing
 # put_item()
 # update_item('gaming_nationals_zaf','gamerid','willz9335')
 # response=get_item()
