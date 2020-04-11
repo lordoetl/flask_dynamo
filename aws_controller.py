@@ -1,13 +1,16 @@
 import boto3
+import time
 
 # dynamo_client = boto3.client('dynamodb')
 dynamo_client = boto3.Session(region_name='us-east-1').client('dynamodb')
-# def get_items():
-#     return dynamo_client.scan(
-#         TableName='YourTestTable'
-#     )
 
-def create_table():
+
+def get_all(table):
+    return dynamo_client.scan(
+        TableName=table
+    )
+
+def create_table(table):
     response = dynamo_client.create_table(
 	AttributeDefinitions=[{
 		'AttributeName': 'event', 
@@ -19,7 +22,7 @@ def create_table():
 	# 	'AttributeType': 'S'
 	# }
     ], 
-	TableName='gamescores', 
+	TableName=table, 
 	KeySchema=[{
 		'AttributeName': 'event', 
 		'KeyType': 'HASH'
@@ -38,11 +41,13 @@ def create_table():
     
   
     )
+    time.sleep(5)
+    put_item(table)
     return response
 
-def put_item():
+def put_item(table):
     dynamo_client.put_item(
-    TableName='gamescores',
+    TableName=table,
     Item={
         'event': {'S': 'gaming_nationals_zaf'}, 
         'timestamp': {'S': '2019-02-08T14:53'}, 
@@ -80,8 +85,8 @@ def update_item(item, attribute, value):
 # put_item()
 # update_item('gaming_nationals_zaf','gamerid','willz9335')
 # response=get_item()
-bob=get_item('gaming_nationals_zaf')
-print(bob)
+# bob=get_item('gaming_nationals_zaf')
+# print(bob)
 # print(response)
 # dynamo_client.get_item(TableName='fruitSalad', Key={'fruitName':{'S':'Banana'}})
 
