@@ -1,6 +1,9 @@
 import csv
 import boto3
 
+#convert_csv_to_json_list will convert the file you pass in to a list of json objects.
+#this function has to be altered to include the column names of your file
+#be sure you include the key
 def convert_csv_to_json_list(file):
    items = []
    with open(file) as csvfile:
@@ -19,13 +22,14 @@ def convert_csv_to_json_list(file):
    return items
 
 def batch_write(items):
-   dynamodb = boto3.resource('dynamodb')
-   db = dynamodb.Table('gamescores')
+   dynamodb = boto3.resource('dynamodb') #attach to dynamodb
+   db = dynamodb.Table('gamescores') #put your table name here
 
-   with db.batch_writer() as batch:
+   #This process will loop through your data and put_item into your table.
+   with db.batch_writer() as batch: 
       for item in items:
-         batch.put_item(Item=item)
+         batch.put_item(Item=item) 
 
 if __name__ == '__main__':
-   json_data = convert_csv_to_json_list('testfile.csv')
+   json_data = convert_csv_to_json_list('testfile.csv')  #Full path to your csv file
    batch_write(json_data)
