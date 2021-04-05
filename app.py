@@ -23,7 +23,7 @@ def get_items():
 @app.route('/get-all/')
 def get_all():
     return jsonify(aws_controller.get_all())
-
+#example comment
 # @app.route('/do_items')
 # def do_items(table):
 #     response=aws_controller.create_table(table)
