@@ -1,3 +1,4 @@
-flask
+flask==1.1.4
 zappa
 boto3
+python==3.6
