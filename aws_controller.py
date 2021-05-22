@@ -1,5 +1,7 @@
 import boto3
 import time
+import os
+
 key= os.environ['awskey']
 secret= os.environ['awssecret']
 
