@@ -12,8 +12,8 @@ def index():
         <br> These links are for demo only.  If you use this as an api, route directly to the link that returns your data
         <br>  In this case the "get all of the data" link
         <br>  If you are running this locally remember that you will want to remove /dev from the url.
-            <br> <a href=/dev/do_items/>Only do this once</a> 
-            <br> <a href=/dev/get-all>get all of the data</a>"""
+            <br> <a href=/do_items/>Only do this once</a> 
+            <br> <a href=/get-all>get all of the data</a>"""
     return html
     
 @app.route('/get-items/')
