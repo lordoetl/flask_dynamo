@@ -1,10 +1,12 @@
 import boto3
 import time
+key= os.environ['awskey']
+secret= os.environ['awssecret']
 
 # dynamo_client = boto3.client('dynamodb')
 #setup a session for boto3 to connect to dynamo.  You need to change the region to the region your Dynamo
 #is in.
-dynamo_client = boto3.Session(region_name='us-east-1').client('dynamodb')
+dynamo_client = boto3.Session(region_name='us-east-1').client('dynamodb',aws_access_key_id=key, aws_secret_access_key=secret)
 
 #This first function get_all() will return all rows from the table in the table variable.
 #I would certainly make this an argument in future revisions.
