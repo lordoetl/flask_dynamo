@@ -27,3 +27,6 @@ Steps to make this work in Zappa
 Assuming you have to (or just want to) update your flask application.
 1.  Make and test your changes locally
 2.  run `zappa update dev`
+
+
+We are not doing this any longer!
