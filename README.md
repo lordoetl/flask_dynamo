@@ -18,6 +18,8 @@ Steps to make this work in Zappa
     (note) you may need to update pip and remember to include any additional requirements you have added.
     to update pip type `python -m pip install --upgrade pip`
     if you have to upgrade pip you will need to install requirements again.
+    
+   ************run `pip install zappa -upgrade`   (This is not mentioned in the video)*************
 8. run `zappa init` you are almost always 'ok' if you except the defaults, but you can change them
     (note) you should see a "zappa_settings.json" file appear in your directory.
 9. run `zappa deploy dev`
