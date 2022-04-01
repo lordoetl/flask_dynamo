@@ -9,7 +9,7 @@ Steps to make this work in Zappa
 4. Write and test your Flask code (provided here)<br>
     4a. ensure it is reading and writing to your DynamoDb
 5. create virtualenv (you may need to `pip install virtualenv`) <br>
-    5a. for windows (and probably Max) `python -m venv \zappenv`
+    5a. for windows  `python -m venv \zappenv`
     5b  for mac `virtualenv zappaenv`
 6. activate your virtualenv <br>
     6a. for Windows `\zappenv\Scripts\activate.bat`
@@ -19,7 +19,7 @@ Steps to make this work in Zappa
     to update pip type `python -m pip install --upgrade pip`
     if you have to upgrade pip you will need to install requirements again.
     
-   ************run `pip install zappa -upgrade`   (This is not mentioned in the video)*************
+   ************run `pip install zappa --upgrade`   (This is not mentioned in the video)*************
 8. run `zappa init` you are almost always 'ok' if you except the defaults, but you can change them
     (note) you should see a "zappa_settings.json" file appear in your directory.
 9. run `zappa deploy dev`
